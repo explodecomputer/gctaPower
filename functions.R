@@ -1,4 +1,4 @@
-calcUniQt <- function(n, hsq)
+calcUniQt <- function(n=1000, hsq=0.5)
 {
 	l <- list()
 	l$se <- 1
@@ -6,7 +6,7 @@ calcUniQt <- function(n, hsq)
 	return(l)
 }
 
-calcUniCc <- function(ncase, ncontrol, hsq, k)
+calcUniCc <- function(ncase=1000, ncontrol=1000, hsq=0.5, k=0.1)
 {
 	l <- list()
 	l$se <- 3
@@ -14,7 +14,7 @@ calcUniCc <- function(ncase, ncontrol, hsq, k)
 	return(l)
 }
 
-calcBiQt <- function(n1, n2, hsq1, hsq2, rg, rp, overlap)
+calcBiQt <- function(n1=1000, n2=1000, hsq1=0.5, hsq2=0.5, rg=0.5, rp=0.5, overlap=FALSE)
 {
 	l <- list()
 	l$se <- 5
@@ -22,7 +22,7 @@ calcBiQt <- function(n1, n2, hsq1, hsq2, rg, rp, overlap)
 	return(l)
 }
 
-calcBiCc <- function(ncase1, ncase2, ncontrol1, ncontrol2, hsq1, hsq2, k1, k2, rg, overlap)
+calcBiCc <- function(ncase1=1000, ncase2=1000, ncontrol1=1000, ncontrol2=1000, hsq1=0.5, hsq2=0.5, k1=0.1, k2=0.1, rg=0.5, overlap=FALSE)
 {
 	l <- list()
 	l$se <- 7
@@ -30,7 +30,7 @@ calcBiCc <- function(ncase1, ncase2, ncontrol1, ncontrol2, hsq1, hsq2, k1, k2, r
 	return(l)
 }
 
-calcBiCc <- function(n, ncase, ncontrol, hsq1, hsq2, k, rg, overlap)
+calcBiQtCc <- function(n=1000, ncase=1000, ncontrol=1000, hsq1=0.5, hsq2=0.5, k=0.1, rg=0.5, overlap=FALSE)
 {
 	l <- list()
 	l$se <- 9
