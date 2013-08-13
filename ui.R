@@ -37,9 +37,19 @@ panelUniQt <- function()
 				max     = 1
 			)
 		),
-		h3("Outputs"),
+		h3("Options"),
 		wellPanel(
-			textOutput("uni_qt")
+			numericInput(
+				inputId = "alpha_uni_qt",
+				label   = "Type 1 error (alpha)",
+				value   = 0.05,
+				min     = 1e-6,
+				max     = 0.99
+			)		
+		),
+		h3("Results"),
+		wellPanel(
+			tableOutput("uni_qt")
 		)
 	)
 }
@@ -76,9 +86,19 @@ panelUniCc <- function()
 				max     = 1
 			)			
 		),
+		h3("Options"),
+		wellPanel(
+			numericInput(
+				inputId = "alpha_uni_cc",
+				label   = "Type 1 error (alpha)",
+				value   = 0.05,
+				min     = 1e-6,
+				max     = 0.99
+			)		
+		),
 		h3("Outputs"),
 		wellPanel(
-			textOutput("uni_cc")
+			tableOutput("uni_cc")
 		)
 	)
 }
@@ -122,11 +142,6 @@ panelBiQt <- function()
 			),
 			h4("Other details"),
 			wellPanel(
-				checkboxInput(
-					inputId = "overlap_bi_qt",
-					label   = "Are the same samples used for both traits?",
-					value   = FALSE
-				),
 				numericInput(
 					inputId = "rp_bi_qt",
 					label   = "Phenotypic correlation",
@@ -143,9 +158,24 @@ panelBiQt <- function()
 				)
 			)
 		),
+		h3("Options"),
+		wellPanel(
+			checkboxInput(
+				inputId = "overlap_bi_qt",
+				label   = "Are the same samples used for both traits?",
+				value   = FALSE
+			),
+			numericInput(
+				inputId = "alpha_bi_qt",
+				label   = "Type 1 error (alpha)",
+				value   = 0.05,
+				min     = 1e-6,
+				max     = 0.99
+			)		
+		),
 		h3("Outputs"),
 		wellPanel(
-			textOutput("bi_qt")
+			tableOutput("bi_qt")
 		)
 	)
 }
@@ -158,13 +188,13 @@ panelBiCc <- function()
 			h4("Trait 1"),
 			wellPanel(
 				numericInput(
-					inputId = "ncase1_bi_cc",
+					inputId = "ncase_bi_cc1",
 					label   = "Number of cases",
 					value   = 1000,
 					min     = 0
 				),
 				numericInput(
-					inputId = "ncontrol1_bi_cc",
+					inputId = "ncontrol_bi_cc1",
 					label   = "Number of controls",
 					value   = 1000,
 					min     = 0
@@ -187,13 +217,13 @@ panelBiCc <- function()
 			h4("Trait 2"),
 			wellPanel(
 				numericInput(
-					inputId = "ncase2_bi_cc",
+					inputId = "ncase_bi_cc2",
 					label   = "Number of cases",
 					value   = 1000,
 					min     = 0
 				),
 				numericInput(
-					inputId = "ncontrol2_bi_cc",
+					inputId = "ncontrol_bi_cc2",
 					label   = "Number of controls",
 					value   = 1000,
 					min     = 0
@@ -215,13 +245,8 @@ panelBiCc <- function()
 			),
 			h4("Other details"),
 			wellPanel(
-				checkboxInput(
-					inputId = "overlap_bi_qt",
-					label   = "Are the same samples used for both traits?",
-					value   = FALSE
-				),
 				numericInput(
-					inputId = "rg_bi_qt",
+					inputId = "rg_bi_cc",
 					label   = "Genetic correlation",
 					value   = 0.5,
 					min     = -1,
@@ -230,9 +255,24 @@ panelBiCc <- function()
 				helpText(HTML(knit2html(text="**Note:** Here we assume that the genetic and phenotypic correlation is the same")))
 			)
 		),
+		h3("Options"),
+		wellPanel(
+			checkboxInput(
+				inputId = "overlap_bi_cc",
+				label   = "Are the same samples used for both traits?",
+				value   = FALSE
+			),
+			numericInput(
+				inputId = "alpha_bi_cc",
+				label   = "Type 1 error (alpha)",
+				value   = 0.05,
+				min     = 1e-6,
+				max     = 0.99
+			)		
+		),
 		h3("Outputs"),
 		wellPanel(
-			textOutput("bi_cc")
+			tableOutput("bi_cc")
 		)
 	)
 }
@@ -289,11 +329,6 @@ panelBiQtCc <- function()
 			),
 			h4("Other details"),
 			wellPanel(
-				checkboxInput(
-					inputId = "overlap_bi_qtcc",
-					label   = "Are the same samples used for both traits?",
-					value   = FALSE
-				),
 				numericInput(
 					inputId = "rg_bi_qtcc",
 					label   = "Genetic correlation",
@@ -304,9 +339,24 @@ panelBiQtCc <- function()
 				helpText(HTML(knit2html(text="**Note:** Here we assume that the genetic and phenotypic correlation is the same")))
 			)
 		),
+		h3("Options"),
+		wellPanel(
+			checkboxInput(
+				inputId = "overlap_bi_qtcc",
+				label   = "Are the same samples used for both traits?",
+				value   = FALSE
+			),
+			numericInput(
+				inputId = "alpha_bi_qtcc",
+				label   = "Type 1 error (alpha)",
+				value   = 0.05,
+				min     = 1e-6,
+				max     = 0.99
+			)		
+		),
 		h3("Outputs"),
 		wellPanel(
-			textOutput("bi_qtcc")
+			tableOutput("bi_qtcc")
 		)
 	)
 }
