@@ -21,7 +21,7 @@ shinyServer(function(input, output)
 
 	output$bi_qt <- renderText(
 	{
-		"hello"
+		"hi"
 	})
 
 	output$bi_cc <- renderText(
