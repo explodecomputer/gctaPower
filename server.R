@@ -1,5 +1,6 @@
 library(shiny)
-library(ggplot2)
+library(knitr)
+
 source("functions.R")
 
 shinyServer(function(input, output)
