@@ -8,8 +8,6 @@ textSidebar <- function()
 			knit2html(text=
 "*brought to you by [CTGG](http://complextraitgenomics.com)*
 
-Hi Jian
-
 ### Calculate the power of univariate or bivariate GCTA analysis
 
 This tool can be used to calculate the statistical power for a GCTA analysis from user-supplied sample sizes and trait heritabilities. For full details on the methods please refer to:
