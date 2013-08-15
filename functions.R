@@ -11,7 +11,6 @@ calcUniQt <- function(
 	return(l)
 }
 
-
 calcUniCc <- function(
 	ncase    = 1000, 
 	ncontrol = 1000, 
