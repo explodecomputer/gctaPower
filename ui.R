@@ -1,6 +1,7 @@
 library(shiny)
 library(knitr)
 
+
 textSidebar <- function()
 {
 	sidebarPanel(
