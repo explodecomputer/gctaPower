@@ -129,3 +129,4 @@ h2O_func <- function(ncase, ncontrol, K, h2L, var_pi=2e-5){
 	var_h2L=c^2*var_h2O
 	return(list(h2L=h2L, var_h2L=var_h2L, h2O=h2O, var_h2O=var_h2O))
 }
+
