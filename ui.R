@@ -44,8 +44,8 @@ panelUniQt <- function()
 			),
 			numericInput(
 				inputId = "hsq_uni_qt",
-				label   = "Trait heritability",
-				value   = 0.5,
+				label   = "Trait heritability (h^2)",
+				value   = 0.2,
 				min     = 0,
 				max     = 1,
         step = 0.1
@@ -73,7 +73,11 @@ panelUniQt <- function()
 		),
 		h3("Results"),
 		wellPanel(
-			tableOutput("uni_qt")
+			tableOutput("uni_qt"),
+			helpText(HTML(knit2html(text="**Standard error:** standard error of the SNP heritability (h^2 ).
+                              **NCP:** non-centrality paramter of the chi-squared test statistic, which equal to h^4 / SE^2 .
+                              **Power:** the probability of detecting h^2 given the type 1 error rate.
+                              ")))
 		)
 	)
 }
@@ -101,7 +105,7 @@ panelUniCc <- function()
 			),
 			numericInput(
 				inputId = "hsq_uni_cc",
-				label   = "Trait heritability (liability scale)",
+				label   = "Trait heritability (on liability scale, h^2)",
 				value   = 0.5,
 				min     = 0,
 				max     = 1,
@@ -138,7 +142,11 @@ panelUniCc <- function()
     ),
 		h3("Outputs"),
 		wellPanel(
-			tableOutput("uni_cc")
+			tableOutput("uni_cc"),
+			helpText(HTML(knit2html(text="**Standard error:** standard error of the SNP heritability (h^2).
+                              **NCP:** non-centrality paramter of the chi-squared test statistic, which equal to h^4 / SE^2 .
+                              **Power:** the probability of detecting h^2 given the type 1 error rate.
+                              ")))
 		)
 	)
 }
@@ -190,7 +198,7 @@ panelBiQt <- function()
 			wellPanel(
 				numericInput(
 					inputId = "rp_bi_qt",
-					label   = "Phenotypic correlation",
+					label   = "Phenotypic correlation (r[P])",
 					value   = 0.5,
 					min     = -1,
 					max     = 1,
@@ -198,7 +206,7 @@ panelBiQt <- function()
 				),
 				numericInput(
 					inputId = "rg_bi_qt",
-					label   = "Genetic correlation",
+					label   = "Genetic correlation (r[G])",
 					value   = 0.5,
 					min     = -1,
 					max     = 1,
@@ -233,7 +241,11 @@ panelBiQt <- function()
     ),
 		h3("Outputs"),
 		wellPanel(
-			tableOutput("bi_qt")
+			tableOutput("bi_qt"),
+			helpText(HTML(knit2html(text="**Standard error:** standard error of the genetic correlation (r[G]).
+                              **NCP:** non-centrality paramter of the chi-squared test statistic, which equal to r[G]^2 / SE^2 .
+                              **Power:** the probability of detecting r[G] given the type 1 error rate.
+                              ")))
 		)
 	)
 }
@@ -263,7 +275,7 @@ panelBiCc <- function()
 				),
 				numericInput(
 					inputId = "hsq_bi_cc1",
-					label   = "Trait heritability (liability scale)",
+					label   = "Trait heritability (on liability scale, h^2)",
 					value   = 0.5,
 					min     = 0,
 					max     = 1,
@@ -298,7 +310,7 @@ panelBiCc <- function()
 				),
 				numericInput(
 					inputId = "hsq_bi_cc2",
-					label   = "Trait heritability (liability scale)",
+					label   = "Trait heritability (on liability scale, h^2)",
 					value   = 0.5,
 					min     = 0,
 					max     = 1,
@@ -354,7 +366,12 @@ panelBiCc <- function()
 		h3("Outputs"),
 		wellPanel(
 			tableOutput("bi_cc")
-		)
+		),
+    helpText(HTML(knit2html(text="**Standard error:** standard error of the genetic correlation (r[G]).
+                              **NCP:** non-centrality paramter of the chi-squared test statistic, which equal to r[G]^2 / SE^2 .
+                              **Power:** the probability of detecting r[G] given the type 1 error rate.
+                              ")))
+	         
 	)
 }
 
@@ -375,7 +392,7 @@ panelBiQtCc <- function()
 				),
 				numericInput(
 					inputId = "hsqqt_bi_qtcc",
-					label   = "Trait heritability",
+					label   = "Trait heritability (h^2)",
 					value   = 0.5,
 					min     = 0,
 					max     = 1,
@@ -402,7 +419,7 @@ panelBiQtCc <- function()
 				),
 				numericInput(
 					inputId = "hsqcc_bi_qtcc",
-					label   = "Trait heritability (liability scale)",
+					label   = "Trait heritability (on liability scale, h^2)",
 					value   = 0.5,
 					min     = 0,
 					max     = 1,
@@ -421,7 +438,7 @@ panelBiQtCc <- function()
 			wellPanel(
 				numericInput(
 					inputId = "rg_bi_qtcc",
-					label   = "Genetic correlation",
+					label   = "Genetic correlation (rG)",
 					value   = 0.5,
 					min     = -1,
 					max     = 1,
@@ -457,7 +474,11 @@ panelBiQtCc <- function()
 		),
 		h3("Outputs"),
 		wellPanel(
-			tableOutput("bi_qtcc")
+			tableOutput("bi_qtcc"),
+			helpText(HTML(knit2html(text="**Standard error:** standard error of the genetic correlation (r[G]).
+                              **NCP:** non-centrality paramter of the chi-squared test statistic, which equal to r[G]^2 / SE^2 .
+                              **Power:** the probability of detecting r[G] given the type 1 error rate.
+                              ")))
 		)
 	)
 }
