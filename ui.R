@@ -12,13 +12,16 @@ textSidebar <- function()
 
 This tool is designed to calculate the statistical power for a GCTA analysis of estimating genetic variance or genetic correlation using genome-wide SNPs. For full details on the methods please refer to:
 
-**Visscher et al. (2013) Statistical power to detect genetic (co)variance of complex traits using SNP data in unrelated samples. Under review.**
+**Visscher et al. (2013) Statistical power to detect genetic (co)variance of complex traits using SNP data in unrelated samples. Under review.**\n
                 
-## [GCTA webpage](http://www.complextraitgenomics.com/software/gcta/)
-                
-**QT vs QT**: bivariate analysis of two quantitative traits
-**CC vs CC**: bivariate analysis of two case-control studies
-**QT vs CC**: bivariate analysis of a quantitative trait and a case-control study
+For more information about GCTA analyses, please visit the **[GCTA webpage](http://www.complextraitgenomics.com/software/gcta/)**\n
+ 
+**NOTE:**\n
+**Quantitative Trait (QT)**: univariate analysis of a quantitative trait\n
+**Case-Control study (CC)**: univariate analysis of a case-control study\n
+**QT vs QT**: bivariate analysis of two quantitative traits\n
+**CC vs CC**: bivariate analysis of two case-control studies\n
+**QT vs CC**: bivariate analysis of a quantitative trait and a case-control study\n
                 
                 "
 			)
@@ -28,7 +31,7 @@ This tool is designed to calculate the statistical power for a GCTA analysis of 
 
 panelUniQt <- function()
 {
-	tabPanel("Quantitative trait (QT)",
+	tabPanel("Quantitative Trait (QT)",
 		h3("Inputs"),
 		wellPanel(
 			numericInput(
@@ -77,7 +80,7 @@ panelUniQt <- function()
 
 panelUniCc <- function()
 {
-	tabPanel("Case-Control design (CC)",
+	tabPanel("Case-Control (CC) Study",
 		h3("Inputs"),
 		wellPanel(
 			numericInput(
@@ -145,7 +148,7 @@ panelBiQt <- function()
 	tabPanel("QT vs QT",
 		h3("Inputs"),
 		wellPanel(
-			h4("Trait 1"),
+			h4("Trait #1"),
 			wellPanel(
 				numericInput(
 					inputId = "n_bi_qt1",
@@ -164,7 +167,7 @@ panelBiQt <- function()
           step = 0.1
 				)
 			),
-			h4("Trait 2"),
+			h4("Trait #2"),
 			wellPanel(
 				numericInput(
 					inputId = "n_bi_qt2",
@@ -240,7 +243,7 @@ panelBiCc <- function()
 	tabPanel("CC vs CC",
 		h3("Inputs"),
 		wellPanel(
-			h4("Trait 1"),
+			h4("Case-control study #1"),
 			wellPanel(
 				numericInput(
 					inputId = "ncase_bi_cc1",
@@ -275,7 +278,7 @@ panelBiCc <- function()
           step = 0.01
 				)			
 			),
-			h4("Trait 2"),
+			h4("Case-control study #2"),
 			wellPanel(
 				numericInput(
 					inputId = "ncase_bi_cc2",
@@ -360,7 +363,7 @@ panelBiQtCc <- function()
 	tabPanel("QT vs CC",
 		h3("Inputs"),
 		wellPanel(
-			h4("Quantitative Trait"),
+			h4("Quantitative trait"),
 			wellPanel(
 				numericInput(
 					inputId = "n_bi_qtcc",
@@ -379,7 +382,7 @@ panelBiQtCc <- function()
           step = 0.1
 				)
 			),
-			h4("Case Control Study"),
+			h4("Case-conntrol study"),
 			wellPanel(
 				numericInput(
 					inputId = "ncase_bi_qtcc",
