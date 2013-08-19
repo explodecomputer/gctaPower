@@ -12,9 +12,23 @@ textSidebar <- function()
 
 This tool is designed to calculate the statistical power for a GCTA analysis of estimating genetic variance or genetic correlation using genome-wide SNPs. For full details on the methods please refer to:
 
-Visscher et al. (2013) Statistical power to detect genetic (co)variance of complex traits using SNP data in unrelated samples. Under review."
+**Visscher et al. (2013) Statistical power to detect genetic (co)variance of complex traits using SNP data in unrelated samples. Under review.**
+                
+## [GCTA webpage](http://www.complextraitgenomics.com/software/gcta/)"
 			)
 		)
+	)
+  
+	sidebarPanel(
+	  HTML(
+	    knit2html(text=
+"**QT vs QT**: bivariate analysis of two quantitative traits
+**CC vs CC**: bivariate analysis of two case-control studies
+**QT vs CC**: bivariate analysis of a quantitative trait and a case-control study
+             
+              "
+	    )
+	  )
 	)
 }
 
@@ -44,7 +58,7 @@ panelUniQt <- function()
 		wellPanel(
 			numericInput(
 				inputId = "alpha_uni_qt",
-				label   = "Type 1 error (alpha)",
+				label   = "Type 1 error rate",
 				value   = 0.05,
 				min     = 5e-20,
 				max     = 1, 
@@ -52,7 +66,7 @@ panelUniQt <- function()
 			),
 			numericInput(
 			  inputId = "vpi_uni_qt",
-			  label   = "Variance in genetic relatedness",
+			  label   = "Variance of the SNP-derived genetic relatiionships",
 			  value   = 2e-5,
 			  min     = 1e-30,
 			  max     = 1, 
@@ -109,7 +123,7 @@ panelUniCc <- function()
 		wellPanel(
 		  numericInput(
 		    inputId = "alpha_uni_cc",
-		    label   = "Type 1 error (alpha)",
+		    label   = "Type 1 error rate",
 		    value   = 0.05,
 		    min     = 5e-20,
 		    max     = 1, 
@@ -117,7 +131,7 @@ panelUniCc <- function()
 		  ),
 		  numericInput(
 		    inputId = "vpi_uni_cc",
-		    label   = "Variance in genetic relatedness",
+		    label   = "Variance of the SNP-derived genetic relatiionships",
 		    value   = 2e-5,
 		    min     = 1e-30,
 		    max     = 1, 
@@ -204,7 +218,7 @@ panelBiQt <- function()
 			),
 			numericInput(
 			  inputId = "alpha_bi_qt",
-			  label   = "Type 1 error (alpha)",
+			  label   = "Type 1 error rate",
 			  value   = 0.05,
 			  min     = 5e-20,
 			  max     = 1, 
@@ -212,7 +226,7 @@ panelBiQt <- function()
 			),
 			numericInput(
 			  inputId = "vpi_bi_qt",
-			  label   = "Variance in genetic relatedness",
+			  label   = "Variance of the SNP-derived genetic relatiionships",
 			  value   = 2e-5,
 			  min     = 1e-30,
 			  max     = 1, 
@@ -324,7 +338,7 @@ panelBiCc <- function()
 			),
 			numericInput(
 			  inputId = "alpha_bi_cc",
-			  label   = "Type 1 error (alpha)",
+			  label   = "Type 1 error rate",
 			  value   = 0.05,
 			  min     = 5e-20,
 			  max     = 1, 
@@ -332,7 +346,7 @@ panelBiCc <- function()
 			),
 			numericInput(
 			  inputId = "vpi_bi_cc",
-			  label   = "Variance in genetic relatedness",
+			  label   = "Variance of the SNP-derived genetic relatiionships",
 			  value   = 2e-5,
 			  min     = 1e-30,
 			  max     = 1, 
@@ -428,7 +442,7 @@ panelBiQtCc <- function()
 			),
 			numericInput(
 			  inputId = "alpha_bi_qtcc",
-			  label   = "Type 1 error (alpha)",
+			  label   = "Type 1 error rate",
 			  value   = 0.05,
 			  min     = 5e-20,
 			  max     = 1, 
@@ -436,7 +450,7 @@ panelBiQtCc <- function()
 			),
 			numericInput(
 			  inputId = "vpi_bi_qtcc",
-			  label   = "Variance in genetic relatedness",
+			  label   = "Variance of the SNP-derived genetic relatiionships",
 			  value   = 2e-5,
 			  min     = 1e-30,
 			  max     = 1, 
