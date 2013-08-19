@@ -7,8 +7,8 @@ source("functions.R")
 makeTable <- function(o)
 {
 	data.frame(
-		Parameters = c("NCP", "Standard error", "Power"),
-		Values     = c(o$ncp, o$se, o$power)
+		Parameters = c("Standard error", "NCP", "Power"),
+		Values     = c(o$se, o$ncp, o$power)
 	)
 }
 
@@ -20,7 +20,8 @@ shinyServer(function(input, output)
 		o <- calcUniQt(
 			n     = input$n_uni_qt, 
 			hsq   = input$hsq_uni_qt, 
-			alpha = input$alpha_uni_qt
+			alpha = input$alpha_uni_qt,
+      var_pi = input$vpi_uni_qt
 		)
 		a <- makeTable(o)
 		return(a)
@@ -32,7 +33,8 @@ shinyServer(function(input, output)
 			ncontrol = input$ncontrol_uni_cc, 
 			hsq      = input$hsq_uni_cc,
 			K        = input$pv_uni_cc,
-			alpha    = input$alpha_uni_cc
+			alpha    = input$alpha_uni_cc,
+			var_pi = input$vpi_uni_cc
 		)
 		a <- makeTable(o)
 		return(a)
@@ -47,7 +49,8 @@ shinyServer(function(input, output)
 			rg      = input$rg_bi_qt, 
 			rp      = input$rp_bi_qt, 
 			overlap = input$overlap_bi_qt, 
-			alpha   = input$alpha_bi_qt
+			alpha   = input$alpha_bi_qt,
+			var_pi = input$vpi_bi_qt
 		)
 		a <- makeTable(o)
 		return(a)
@@ -66,7 +69,8 @@ shinyServer(function(input, output)
 			K2        = input$pv_bi_cc2,
 			rg        = input$rg_bi_cc,
 			overlap   = input$overlap_bi_cc,
-			alpha     = input$alpha_bi_cc
+			alpha     = input$alpha_bi_cc,
+			var_pi = input$vpi_bi_cc
 		)
 		a <- makeTable(o)
 		return(a)
@@ -82,7 +86,8 @@ shinyServer(function(input, output)
 			K        = input$pvcc_bi_qtcc, 
 			rg       = input$rg_bi_qtcc, 
 			overlap  = input$overlap_bi_qtcc, 
-			alpha    = input$alpha_bi_qtcc
+			alpha    = input$alpha_bi_qtcc,
+			var_pi = input$vpi_bi_qtcc
 		)
 		a <- makeTable(o)
 		return(a)

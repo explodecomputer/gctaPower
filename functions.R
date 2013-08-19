@@ -1,10 +1,11 @@
 calcUniQt <- function(
 	n     =1000, 
 	hsq   =0.5, 
-	alpha =0.05
+	alpha =0.05,
+  var_pi=2e-5
 ){
 	l <- list()
-	var_vg <- var_vg_func(n)
+	var_vg <- var_vg_func(n, var_pi)
 	l$se <- sqrt(var_vg)
 	l$ncp <- hsq^2/var_vg;
 	l$power <- power_func(l$ncp, alpha)
@@ -16,9 +17,10 @@ calcUniCc <- function(
 	ncontrol = 1000, 
 	hsq      = 0.5, 
 	K        = 0.1, 
-	alpha    = 0.05
+	alpha    = 0.05,
+	var_pi=2e-5
 ){
-	h <- h2O_func(ncase, ncontrol, K, hsq)
+	h <- h2O_func(ncase, ncontrol, K, hsq, var_pi)
 	l <- list()
 	l$se <- sqrt(h$var_h2L)
 	l$ncp <- h$h2L^2/h$var_h2L
@@ -36,9 +38,10 @@ calcBiQt <- function(
 	rg      = 0.5, 
 	rp      = 0.5, 
 	overlap = FALSE, 
-	alpha   = 0.05
+	alpha   = 0.05,
+	var_pi=2e-5
 ){
-	var_rg <- var_rg_func(n1, n2, hsq1, hsq2, rg, rp, overlap)
+	var_rg <- var_rg_func(n1, n2, hsq1, hsq2, rg, rp, overlap, var_pi)
 	l <- list()
 	l$se <- sqrt(var_rg)
 	l$ncp <- rg^2/var_rg;
@@ -59,13 +62,14 @@ calcBiCc <- function(
 	K2        = 0.1, 
 	rg        = 0.5, 
 	overlap   = FALSE, 
-	alpha     = 0.05
+	alpha     = 0.05,
+	var_pi=2e-5
 ){
-	h1 <- h2O_func(ncase1, ncontrol1, K1, hsq1)
-	h2 <- h2O_func(ncase2, ncontrol2, K2, hsq2)
+	h1 <- h2O_func(ncase1, ncontrol1, K1, hsq1, var_pi)
+	h2 <- h2O_func(ncase2, ncontrol2, K2, hsq2, var_pi)
 	n1 <- ncase1+ncontrol1
 	n2 <- ncase2+ncontrol2
-	var_rg <- var_rg_func(n1, n2, h1$h2L, h2$h2L, rg, rg, overlap)
+	var_rg <- var_rg_func(n1, n2, h1$h2L, h2$h2L, rg, rg, overlap, var_pi)
 	l <- list()
 	l$se <- sqrt(var_rg)
 	l$ncp <- rg^2/var_rg;
@@ -84,11 +88,12 @@ calcBiQtCc <- function(
 	K        = 0.1, 
 	rg       = 0.5, 
 	overlap  = FALSE, 
-	alpha    = 0.05
+	alpha    = 0.05,
+	var_pi=2e-5
 ){
-	h2=h2O_func(ncase, ncontrol, K, hsq2)
+	h2=h2O_func(ncase, ncontrol, K, hsq2, var_pi)
 	n2=ncase+ncontrol
-	var_rg=var_rg_func(n, n2, hsq1, h2$h2L, rg, rg, overlap)
+	var_rg=var_rg_func(n, n2, hsq1, h2$h2L, rg, rg, overlap, var_pi)
 	l <- list()
 	l$se <- sqrt(var_rg)
 	l$ncp <- rg^2/var_rg;
@@ -114,13 +119,13 @@ power_func <- function(ncp, alpha){
 }
 
 
-h2O_func <- function(ncase, ncontrol, K, h2L){
+h2O_func <- function(ncase, ncontrol, K, h2L, var_pi=2e-5){
 	n=ncase+ncontrol
 	v=ncase/(ncase+ncontrol)
 	i=dnorm(qnorm(K))/K
 	c=(1-K)^2/(v*(1-v)*i^2)
 	h2O=h2L/c
-	var_h2O=var_vg_func(n)
+	var_h2O=var_vg_func(n, var_pi)
 	var_h2L=c^2*var_h2O
 	return(list(h2L=h2L, var_h2L=var_h2L, h2O=h2O, var_h2O=var_h2O))
 }

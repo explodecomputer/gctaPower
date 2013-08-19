@@ -7,13 +7,13 @@ textSidebar <- function()
 	sidebarPanel(
 		HTML(
 			knit2html(text=
-"*brought to you by [CTGG](http://complextraitgenomics.com)*
+"*brought to you by [Gibran Hemani](mailto:gibran.hemani@uq.edu.au) and [Jian Yang](mailto:jian.yang@uq.edu.au)*
 
 ### Calculate the power of univariate or bivariate GCTA analysis
 
-This tool can be used to calculate the statistical power for a GCTA analysis from user-supplied sample sizes and trait heritabilities. For full details on the methods please refer to:
+This tool is designed to calculate the statistical power for a GCTA analysis of estimating genetic variance or genetic correlation using genome-wide SNPs. For full details on the methods please refer to:
 
-[Yang et al. 2013. **GCTA Power Calculator**. *Some journal* 1(1) 1-10](http://pubmed.com)"
+Visscher et al. (2013) Statistical power to detect genetic (co)variance of complex traits using SNP data in unrelated samples. Under review."
 			)
 		)
 	)
@@ -21,21 +21,24 @@ This tool can be used to calculate the statistical power for a GCTA analysis fro
 
 panelUniQt <- function()
 {
-	tabPanel("Quantitative",
+	tabPanel("Quantitative trait (QT)",
 		h3("Inputs"),
 		wellPanel(
 			numericInput(
 				inputId = "n_uni_qt",
 				label   = "Sample size",
-				value   = 1000,
-				min     = 0
+				value   = 4000,
+				min     = 0,
+        max = 1e30,
+        step = 1000
 			),
 			numericInput(
 				inputId = "hsq_uni_qt",
 				label   = "Trait heritability",
 				value   = 0.5,
 				min     = 0,
-				max     = 1
+				max     = 1,
+        step = 0.1
 			)
 		),
 		h3("Options"),
@@ -44,9 +47,19 @@ panelUniQt <- function()
 				inputId = "alpha_uni_qt",
 				label   = "Type 1 error (alpha)",
 				value   = 0.05,
-				min     = 1e-6,
-				max     = 0.99
-			)		
+				min     = 5e-20,
+				max     = 1, 
+        step = 0.01
+			),
+			numericInput(
+			  inputId = "vpi_uni_qt",
+			  label   = "Variance in genetic relatedness",
+			  value   = 2e-5,
+			  min     = 1e-30,
+			  max     = 1, 
+			  step = 1e-5
+			),
+			helpText(HTML(knit2html(text="**Note:** The default value 2e-5 is obtained from the genetic relatedness between unrelated individuals using common SNPs. ")))
 		),
 		h3("Results"),
 		wellPanel(
@@ -57,46 +70,62 @@ panelUniQt <- function()
 
 panelUniCc <- function()
 {
-	tabPanel("Case Control",
+	tabPanel("Case-Control design (CC)",
 		h3("Inputs"),
 		wellPanel(
 			numericInput(
 				inputId = "ncase_uni_cc",
 				label   = "Number of cases",
-				value   = 1000,
-				min     = 0
+				value   = 2000,
+				min     = 0,
+        max = 1e30,
+        step = 500
 			),
 			numericInput(
 				inputId = "ncontrol_uni_cc",
 				label   = "Number of controls",
-				value   = 1000,
-				min     = 0
+				value   = 2000,
+				min     = 0,
+        max = 1e30,
+        step = 500
 			),
 			numericInput(
 				inputId = "hsq_uni_cc",
 				label   = "Trait heritability (liability scale)",
 				value   = 0.5,
 				min     = 0,
-				max     = 1
+				max     = 1,
+        step = 0.1
 			),
 			numericInput(
 				inputId = "pv_uni_cc",
 				label   = "Prevalence",
-				value   = 0.5,
+				value   = 0.1,
 				min     = 0,
-				max     = 1
+				max     = 1,
+        step = 0.01
 			)			
 		),
 		h3("Options"),
 		wellPanel(
-			numericInput(
-				inputId = "alpha_uni_cc",
-				label   = "Type 1 error (alpha)",
-				value   = 0.05,
-				min     = 1e-6,
-				max     = 0.99
-			)		
-		),
+		  numericInput(
+		    inputId = "alpha_uni_cc",
+		    label   = "Type 1 error (alpha)",
+		    value   = 0.05,
+		    min     = 5e-20,
+		    max     = 1, 
+		    step = 0.01
+		  ),
+		  numericInput(
+		    inputId = "vpi_uni_cc",
+		    label   = "Variance in genetic relatedness",
+		    value   = 2e-5,
+		    min     = 1e-30,
+		    max     = 1, 
+		    step = 1e-5
+		  ),
+		  helpText(HTML(knit2html(text="**Note:** The default value 2e-5 is obtained from the genetic relatedness between unrelated individuals using common SNPs. ")))
+    ),
 		h3("Outputs"),
 		wellPanel(
 			tableOutput("uni_cc")
@@ -114,15 +143,18 @@ panelBiQt <- function()
 				numericInput(
 					inputId = "n_bi_qt1",
 					label   = "Sample size",
-					value   = 1000,
-					min     = 0
+					value   = 4000,
+					min     = 0,
+          max = 1e30,
+          step = 1000
 				),
 				numericInput(
 					inputId = "hsq_bi_qt1",
 					label   = "Trait heritability",
 					value   = 0.5,
 					min     = 0,
-					max     = 1
+					max     = 1,
+          step = 0.1
 				)
 			),
 			h4("Trait 2"),
@@ -130,15 +162,18 @@ panelBiQt <- function()
 				numericInput(
 					inputId = "n_bi_qt2",
 					label   = "Sample size",
-					value   = 1000,
-					min     = 0
+					value   = 4000,
+					min     = 0,
+          max = 1e30,
+          step = 1000
 				),
 				numericInput(
 					inputId = "hsq_bi_qt2",
 					label   = "Trait heritability",
 					value   = 0.5,
 					min     = 0,
-					max     = 1
+					max     = 1,
+          step = 0.1
 				)
 			),
 			h4("Other details"),
@@ -148,14 +183,16 @@ panelBiQt <- function()
 					label   = "Phenotypic correlation",
 					value   = 0.5,
 					min     = -1,
-					max     = 1
+					max     = 1,
+          step = 0.1
 				),
 				numericInput(
 					inputId = "rg_bi_qt",
 					label   = "Genetic correlation",
 					value   = 0.5,
 					min     = -1,
-					max     = 1
+					max     = 1,
+          step = 0.1
 				)
 			)
 		),
@@ -167,13 +204,23 @@ panelBiQt <- function()
 				value   = FALSE
 			),
 			numericInput(
-				inputId = "alpha_bi_qt",
-				label   = "Type 1 error (alpha)",
-				value   = 0.05,
-				min     = 1e-6,
-				max     = 0.99
-			)		
-		),
+			  inputId = "alpha_bi_qt",
+			  label   = "Type 1 error (alpha)",
+			  value   = 0.05,
+			  min     = 5e-20,
+			  max     = 1, 
+			  step = 0.01
+			),
+			numericInput(
+			  inputId = "vpi_bi_qt",
+			  label   = "Variance in genetic relatedness",
+			  value   = 2e-5,
+			  min     = 1e-30,
+			  max     = 1, 
+			  step = 1e-5
+			),
+			helpText(HTML(knit2html(text="**Note:** The default value 2e-5 is obtained from the genetic relatedness between unrelated individuals using common SNPs. ")))
+    ),
 		h3("Outputs"),
 		wellPanel(
 			tableOutput("bi_qt")
@@ -191,28 +238,34 @@ panelBiCc <- function()
 				numericInput(
 					inputId = "ncase_bi_cc1",
 					label   = "Number of cases",
-					value   = 1000,
-					min     = 0
+					value   = 2000,
+					min     = 0,
+          max = 1e30,
+          step = 500
 				),
 				numericInput(
 					inputId = "ncontrol_bi_cc1",
 					label   = "Number of controls",
-					value   = 1000,
-					min     = 0
+					value   = 2000,
+					min     = 0,
+					max = 1e30,
+					step = 500
 				),
 				numericInput(
 					inputId = "hsq_bi_cc1",
 					label   = "Trait heritability (liability scale)",
 					value   = 0.5,
 					min     = 0,
-					max     = 1
+					max     = 1,
+          step = 0.1
 				),
 				numericInput(
 					inputId = "pv_bi_cc1",
 					label   = "Prevalence",
-					value   = 0.5,
+					value   = 0.1,
 					min     = 0,
-					max     = 1
+					max     = 1,
+          step = 0.01
 				)			
 			),
 			h4("Trait 2"),
@@ -220,28 +273,34 @@ panelBiCc <- function()
 				numericInput(
 					inputId = "ncase_bi_cc2",
 					label   = "Number of cases",
-					value   = 1000,
-					min     = 0
+					value   = 2000,
+					min     = 0,
+          max = 1e30,
+          step = 500
 				),
 				numericInput(
 					inputId = "ncontrol_bi_cc2",
 					label   = "Number of controls",
-					value   = 1000,
-					min     = 0
+					value   = 2000,
+					min     = 0,
+          max = 1e30,
+          step = 500
 				),
 				numericInput(
 					inputId = "hsq_bi_cc2",
 					label   = "Trait heritability (liability scale)",
 					value   = 0.5,
 					min     = 0,
-					max     = 1
+					max     = 1,
+          step = 0.1
 				),
 				numericInput(
 					inputId = "pv_bi_cc2",
 					label   = "Prevalence",
-					value   = 0.5,
+					value   = 0.1,
 					min     = 0,
-					max     = 1
+					max     = 1,
+          step = 0.01
 				)			
 			),
 			h4("Other details"),
@@ -251,7 +310,8 @@ panelBiCc <- function()
 					label   = "Genetic correlation",
 					value   = 0.5,
 					min     = -1,
-					max     = 1
+					max     = 1,
+          step = 0.1
 				),
 				helpText(HTML(knit2html(text="**Note:** Here we assume that the genetic and phenotypic correlation is the same")))
 			)
@@ -264,12 +324,22 @@ panelBiCc <- function()
 				value   = FALSE
 			),
 			numericInput(
-				inputId = "alpha_bi_cc",
-				label   = "Type 1 error (alpha)",
-				value   = 0.05,
-				min     = 1e-6,
-				max     = 0.99
-			)		
+			  inputId = "alpha_bi_cc",
+			  label   = "Type 1 error (alpha)",
+			  value   = 0.05,
+			  min     = 5e-20,
+			  max     = 1, 
+			  step = 0.01
+			),
+			numericInput(
+			  inputId = "vpi_bi_cc",
+			  label   = "Variance in genetic relatedness",
+			  value   = 2e-5,
+			  min     = 1e-30,
+			  max     = 1, 
+			  step = 1e-5
+			),
+			helpText(HTML(knit2html(text="**Note:** The default value 2e-5 is obtained from the genetic relatedness between unrelated individuals using common SNPs. ")))
 		),
 		h3("Outputs"),
 		wellPanel(
@@ -288,44 +358,53 @@ panelBiQtCc <- function()
 				numericInput(
 					inputId = "n_bi_qtcc",
 					label   = "Sample size",
-					value   = 1000,
-					min     = 0
+					value   = 4000,
+					min     = 0,
+          max = 1e30,
+          step = 1000
 				),
 				numericInput(
 					inputId = "hsqqt_bi_qtcc",
 					label   = "Trait heritability",
 					value   = 0.5,
 					min     = 0,
-					max     = 1
+					max     = 1,
+          step = 0.1
 				)
 			),
-			h4("Case Control Trait"),
+			h4("Case Control Study"),
 			wellPanel(
 				numericInput(
 					inputId = "ncase_bi_qtcc",
 					label   = "Number of cases",
-					value   = 1000,
-					min     = 0
+					value   = 2000,
+					min     = 0,
+          max = 1e30,
+          step = 500
 				),
 				numericInput(
 					inputId = "ncontrol_bi_qtcc",
 					label   = "Number of controls",
-					value   = 1000,
-					min     = 0
+					value   = 2000,
+					min     = 0,
+          max = 1e30,
+          step = 500
 				),
 				numericInput(
 					inputId = "hsqcc_bi_qtcc",
 					label   = "Trait heritability (liability scale)",
 					value   = 0.5,
 					min     = 0,
-					max     = 1
+					max     = 1,
+          step = 0.1
 				),
 				numericInput(
 					inputId = "pvcc_bi_qtcc",
 					label   = "Prevalence",
-					value   = 0.5,
+					value   = 0.1,
 					min     = 0,
-					max     = 1
+					max     = 1,
+          step = 0.01
 				)			
 			),
 			h4("Other details"),
@@ -335,7 +414,8 @@ panelBiQtCc <- function()
 					label   = "Genetic correlation",
 					value   = 0.5,
 					min     = -1,
-					max     = 1
+					max     = 1,
+          step = 0.1
 				),
 				helpText(HTML(knit2html(text="**Note:** Here we assume that the genetic and phenotypic correlation is the same")))
 			)
@@ -348,12 +428,22 @@ panelBiQtCc <- function()
 				value   = FALSE
 			),
 			numericInput(
-				inputId = "alpha_bi_qtcc",
-				label   = "Type 1 error (alpha)",
-				value   = 0.05,
-				min     = 1e-6,
-				max     = 0.99
-			)		
+			  inputId = "alpha_bi_qtcc",
+			  label   = "Type 1 error (alpha)",
+			  value   = 0.05,
+			  min     = 5e-20,
+			  max     = 1, 
+			  step = 0.01
+			),
+			numericInput(
+			  inputId = "vpi_bi_qtcc",
+			  label   = "Variance in genetic relatedness",
+			  value   = 2e-5,
+			  min     = 1e-30,
+			  max     = 1, 
+			  step = 1e-5
+			),
+			helpText(HTML(knit2html(text="**Note:** The default value 2e-5 is obtained from the genetic relatedness between unrelated individuals using common SNPs. ")))
 		),
 		h3("Outputs"),
 		wellPanel(
