@@ -14,21 +14,15 @@ This tool is designed to calculate the statistical power for a GCTA analysis of 
 
 **Visscher et al. (2013) Statistical power to detect genetic (co)variance of complex traits using SNP data in unrelated samples. Under review.**
                 
-## [GCTA webpage](http://www.complextraitgenomics.com/software/gcta/)"
-			)
-		)
-	)
-  
-	sidebarPanel(
-	  HTML(
-	    knit2html(text=
-"**QT vs QT**: bivariate analysis of two quantitative traits
+## [GCTA webpage](http://www.complextraitgenomics.com/software/gcta/)
+                
+**QT vs QT**: bivariate analysis of two quantitative traits
 **CC vs CC**: bivariate analysis of two case-control studies
 **QT vs CC**: bivariate analysis of a quantitative trait and a case-control study
-             
-              "
-	    )
-	  )
+                
+                "
+			)
+		)
 	)
 }
 
