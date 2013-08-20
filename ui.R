@@ -248,9 +248,9 @@ panelBiQt <- function()
 		h3("Outputs"),
 		wellPanel(
 			tableOutput("bi_qt"),
-			helpText(HTML(knit2html(text="**Standard error (SE):** standard error of the SNP heritability ($h^2$).
-                              **NCP:** non-centrality paramter of the chi-squared test statistic, which equal to $h^4 / SE^2$ .
-                              **Power:** the probability of detecting $h^2$ given the type 1 error rate.
+			helpText(HTML(knit2html(text="**Standard error (SE):** standard error of the genetic correlation ($r_G$).
+                              **NCP:** non-centrality paramter of the chi-squared test statistic, which equal to $r_G^2 / SE^2$ .
+                              **Power:** the probability of detecting $r_G$ given the type 1 error rate.
                               ")))
 		)
 	)
@@ -373,9 +373,9 @@ panelBiCc <- function()
 		wellPanel(
 			tableOutput("bi_cc")
 		),
-		helpText(HTML(knit2html(text="**Standard error (SE):** standard error of the SNP heritability ($h^2$).
-                              **NCP:** non-centrality paramter of the chi-squared test statistic, which equal to $h^4 / SE^2$ .
-                              **Power:** the probability of detecting $h^2$ given the type 1 error rate.
+	  helpText(HTML(knit2html(text="**Standard error (SE):** standard error of the genetic correlation ($r_G$).
+                              **NCP:** non-centrality paramter of the chi-squared test statistic, which equal to $r_G^2 / SE^2$ .
+                              **Power:** the probability of detecting $r_G$ given the type 1 error rate.
                               ")))
 	         
 	)
@@ -481,9 +481,9 @@ panelBiQtCc <- function()
 		h3("Outputs"),
 		wellPanel(
 			tableOutput("bi_qtcc"),
-			helpText(HTML(knit2html(text="**Standard error (SE):** standard error of the SNP heritability ($h^2$).
-                              **NCP:** non-centrality paramter of the chi-squared test statistic, which equal to $h^4 / SE^2$ .
-                              **Power:** the probability of detecting $h^2$ given the type 1 error rate.
+			helpText(HTML(knit2html(text="**Standard error (SE):** standard error of the genetic correlation ($r_G$).
+                              **NCP:** non-centrality paramter of the chi-squared test statistic, which equal to $r_G^2 / SE^2$ .
+                              **Power:** the probability of detecting $r_G$ given the type 1 error rate.
                               ")))
 		)
 	)
