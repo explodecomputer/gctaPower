@@ -9,7 +9,7 @@ textSidebar <- function()
         tags$style(type="text/css", "body {font-size: 20px; }")),
 		HTML(
 			knit2html(text=
-"*written by [Gibran Hemani](mailto:gibran.hemani@uq.edu.au) and [Jian Yang](mailto:jian.yang@uq.edu.au)*
+"*written by [Gibran Hemani](mailto:gibran.hemani@uq.edu.au) and [Jian Yang](mailto:jian.yang@uq.edu.au) at [CTGG](http://www.complextraitgenomics.com/)*
 
 ### Calculate the power of univariate or bivariate GCTA analysis
 
