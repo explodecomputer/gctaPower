@@ -25,7 +25,7 @@ shinyServer(function(input, output)
 		)
 		a <- makeTable(o)
 		return(a)
-	})
+	}, digits=4, include.rownames=FALSE)
 
 	output$uni_cc <- renderTable({
 		o <- calcUniCc(
@@ -38,7 +38,7 @@ shinyServer(function(input, output)
 		)
 		a <- makeTable(o)
 		return(a)
-	})
+	}, digits=4, include.rownames=FALSE)
 
 	output$bi_qt <- renderTable({
 		o <- calcBiQt(
@@ -54,7 +54,7 @@ shinyServer(function(input, output)
 		)
 		a <- makeTable(o)
 		return(a)
-	})
+	}, digits=4, include.rownames=FALSE)
 
 
 	output$bi_cc <- renderTable({
@@ -74,7 +74,7 @@ shinyServer(function(input, output)
 		)
 		a <- makeTable(o)
 		return(a)
-	})
+	}, digits=4, include.rownames=FALSE)
 
 	output$bi_qtcc <- renderTable({
 		o <- calcBiQtCc(
@@ -91,6 +91,6 @@ shinyServer(function(input, output)
 		)
 		a <- makeTable(o)
 		return(a)
-	})
+	}, digits=4, include.rownames=FALSE)
 
 })
