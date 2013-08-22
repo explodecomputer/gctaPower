@@ -69,7 +69,7 @@ calcBiCc <- function(
 	h2 <- h2O_func(ncase2, ncontrol2, K2, hsq2, var_pi)
 	n1 <- ncase1+ncontrol1
 	n2 <- ncase2+ncontrol2
-	var_rg <- var_rg_func(n1, n2, h1$h2L, h2$h2L, rg, rg, overlap, var_pi)
+	var_rg <- var_rg_func(n1, n2, h1$h2O, h2$h2O, rg, rg, overlap, var_pi)
 	l <- list()
 	l$se <- sqrt(var_rg)
 	l$ncp <- rg^2/var_rg;
@@ -93,7 +93,7 @@ calcBiQtCc <- function(
 ){
 	h2=h2O_func(ncase, ncontrol, K, hsq2, var_pi)
 	n2=ncase+ncontrol
-	var_rg=var_rg_func(n, n2, hsq1, h2$h2L, rg, rg, overlap, var_pi)
+	var_rg=var_rg_func(n, n2, hsq1, h2$h2O, rg, rg, overlap, var_pi)
 	l <- list()
 	l$se <- sqrt(var_rg)
 	l$ncp <- rg^2/var_rg;
