@@ -20,30 +20,30 @@ For more information about GCTA analyses, please visit the **[GCTA webpage](http
 				)
 			)
 		),
-				h3("Select the type of analysis"),
+		h3("Select the type of analysis"),
 		wellPanel(
 			radioButtons(
 				inputId = "experiment",
 				label   = "",
 				c("Univariate analysis" = "univ", "Bivariate analysis" = "biv")
 			)
-		),
-		h3("Details"),
-		wellPanel(
-			HTML(
-				knit2html(text=
-"**Quantitative Trait (QT)**: univariate analysis of a quantitative trait
-
-**Case-Control study (CC)**: univariate analysis of a case-control study
-
-**QT vs QT**: bivariate analysis of two quantitative traits
-
-**CC vs CC**: bivariate analysis of two case-control studies
-
-**QT vs CC**: bivariate analysis of a quantitative trait and a case-control study"
-				)
- 			)
 		)
+		#h3("Details"),
+		#wellPanel(
+			#HTML(
+			#	knit2html(text=
+#"**Quantitative Trait (QT)**: univariate analysis of a quantitative trait
+
+#**Case-Control study (CC)**: univariate analysis of a case-control study
+
+#**QT vs QT**: bivariate analysis of two quantitative traits
+
+#**CC vs CC**: bivariate analysis of two case-control studies
+
+#**QT vs CC**: bivariate analysis of a quantitative trait and a case-control study"
+				#)
+ 			#)
+		#)
 	)
 }
 
@@ -86,7 +86,7 @@ rgExplanation <- helpText(HTML(knit2html(text=
 
 panelUniQt <- function()
 {
-	tabPanel("Quantitative Trait (QT)",
+	tabPanel("Quantitative Trait",
 		h3("Inputs"),
 		wellPanel(
 			numericInput(
@@ -137,7 +137,7 @@ panelUniQt <- function()
 
 panelUniCc <- function()
 {
-	tabPanel("Case-Control (CC) Study",
+	tabPanel("Case-Control Study",
 		h3("Inputs"),
 		wellPanel(
 			numericInput(
@@ -204,7 +204,7 @@ panelUniCc <- function()
 
 panelBiQt <- function()
 {
-	tabPanel("QT vs QT",
+	tabPanel("Two Quantitative Traits",
 		h3("Inputs"),
 		wellPanel(
 			h4("Trait #1"),
@@ -311,7 +311,7 @@ panelBiQt <- function()
 
 panelBiCc <- function()
 {
-	tabPanel("CC vs CC",
+	tabPanel("Two Case-control Studies",
 		h3("Inputs"),
 		wellPanel(
 			h4("Case-control study #1"),
@@ -443,7 +443,7 @@ panelBiCc <- function()
 
 panelBiQtCc <- function()
 {
-	tabPanel("QT vs CC",
+	tabPanel("Quantitative Trait vs. Case-Control Study",
 		h3("Inputs"),
 		wellPanel(
 			h4("Quantitative trait"),
