@@ -36,19 +36,19 @@ For more information about GCTA analyses, please visit the **[GCTA webpage](http
 }
 
 outputExplanation_uni <- helpText(HTML(knit2html(text=
-"**Standard error (SE):** Standard error of the SNP heritability ($h^2$).
+"**Standard error (SE):** Standard error of the SNP-heritability ($h^2$).
 
 **NCP:** Non-centrality paramter of the chi-squared test statistic, which equal to $h^4 / (SE)^2$.
 
-**Power:** Probability of significantly detecting $h^2 > 0$ for the given the user-specified type I error rate and the SNP-heritability assumed in the population."
+**Power:** The probability of detecting $h^2 > 0$ for the given the user-specified type I error rate and the SNP-heritability assumed in the population."
 )))
 
 outputExplanation_bi <- helpText(HTML(knit2html(text=
-"**Standard error (SE):** Standard error of the SNP heritability ($h^2$).
+"**Standard error (SE):** Standard error of the genetic correlation ($r_G$).
 
-**NCP:** Non-centrality paramter of the chi-squared test statistic, which equal to $h^4 / (SE)^2$.
+**NCP:** Non-centrality paramter of the chi-squared test statistic, which equals to $r_G^2 / (SE)^2$.
 
-**Power:** Probability of significantly detecting $h^2 > 0$ for the given the user-specified type I error rate, and the genetic correlation and SNP-heritability assumed in the population."
+**Power:** The probability of detecting $r_G$ for the given user-specified type I error rate, SNP-heritability, and genetic correlation assumed in the population."
 )))
 
 vpiExplanation <- helpText(HTML(knit2html(text=
@@ -60,16 +60,16 @@ hsqExplanation_uni <- helpText(HTML(knit2html(text=
 )))
 
 hsqExplanation_biqt <- helpText(HTML(knit2html(text=
-"**Note:** The calculation of the SE of ($r_G) requires the true SNP-heritability of the trait."
+"**Note:** The calculation of the SE of $r_G$ requires the true SNP-heritability of the trait."
 )))
 
 hsqExplanation_bicc <- helpText(HTML(knit2html(text=
-"**Note:** The calculation of the SE of ($r_G) requires the true SNP-heritability of the disease."
+"**Note:** The calculation of the SE of $r_G$ requires the true SNP-heritability of the disease."
 )))
 
 
 rgExplanation <- helpText(HTML(knit2html(text=
-"**Note:** The power calculation of ($r_G) requires the true paramter of ($r_G), so that the power is the probability of estimating a ($r_G) that is different from zero."
+"**Note:** The power calculation of $r_G$ requires the true paramter of $r_G$, so that the power is the probability of estimating a $r_G$ that is different from zero."
 )))
 
 panelUniQt <- function()
