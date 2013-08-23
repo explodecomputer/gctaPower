@@ -122,8 +122,8 @@ power_func <- function(ncp, alpha){
 h2O_func <- function(ncase, ncontrol, K, h2L, var_pi=2e-5){
 	n=ncase+ncontrol
 	v=ncase/(ncase+ncontrol)
-	i=dnorm(qnorm(K))/K
-	c=(1-K)^2/(v*(1-v)*i^2)
+	z=dnorm(qnorm(K))
+	c=(K*(1-K))^2/(v*(1-v)*z^2)
 	h2O=h2L/c
 	var_h2O=var_vg_func(n, var_pi)
 	var_h2L=c^2*var_h2O
