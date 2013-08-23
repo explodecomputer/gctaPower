@@ -52,7 +52,7 @@ outputExplanation_bi <- helpText(HTML(knit2html(text=
 )))
 
 vpiExplanation <- helpText(HTML(knit2html(text=
-"**Note:** The default value 2e-5 is obtained from the genetic relatedness between unrelated individuals using common SNPs. "
+"**Note:** The default value 2e-5 is obtained from the genetic relatedness between unrelated individuals using genome-wide common SNPs, which is basically the variance of the off-diagonal elements of the GRM. If your analysis is based on a subset of SNPs, you can specify this using the empirical value observed from your data."
 )))
 
 hsqExplanation_uni <- helpText(HTML(knit2html(text=
