@@ -20,6 +20,14 @@ For more information about GCTA analyses, please visit the **[GCTA webpage](http
 				)
 			)
 		),
+				h3("Select the type of analysis"),
+		wellPanel(
+			radioButtons(
+				inputId = "experiment",
+				label   = "",
+				c("Univariate analysis" = "univ", "Bivariate analysis" = "biv")
+			)
+		),
 		h3("Details"),
 		wellPanel(
 			HTML(
@@ -35,14 +43,6 @@ For more information about GCTA analyses, please visit the **[GCTA webpage](http
 **QT vs CC**: bivariate analysis of a quantitative trait and a case-control study"
 				)
  			)
-		),
-		h3("Select the type of analysis"),
-		wellPanel(
-			radioButtons(
-				inputId = "experiment",
-				label   = "",
-				c("Univariate" = "univ", "Bivariate" = "biv")
-			)
 		)
 	)
 }
