@@ -35,7 +35,7 @@ For more information about GCTA analyses, please visit the **[GCTA webpage](http
 	)
 }
 
-outputExplanation1 <- helpText(HTML(knit2html(text=
+outputExplanation_uni <- helpText(HTML(knit2html(text=
 "**Standard error (SE):** Standard error of the SNP heritability ($h^2$).
 
 **NCP:** Non-centrality paramter of the chi-squared test statistic, which equal to $h^4 / (SE)^2$.
@@ -43,7 +43,7 @@ outputExplanation1 <- helpText(HTML(knit2html(text=
 **Power:** Probability of significantly detecting $h^2 > 0$ for the given the user-specified type I error rate and the SNP-heritability assumed in the population."
 )))
 
-outputExplanation2 <- helpText(HTML(knit2html(text=
+outputExplanation_bi <- helpText(HTML(knit2html(text=
 "**Standard error (SE):** Standard error of the SNP heritability ($h^2$).
 
 **NCP:** Non-centrality paramter of the chi-squared test statistic, which equal to $h^4 / (SE)^2$.
@@ -51,14 +51,26 @@ outputExplanation2 <- helpText(HTML(knit2html(text=
 **Power:** Probability of significantly detecting $h^2 > 0$ for the given the user-specified type I error rate, and the genetic correlation and SNP-heritability assumed in the population."
 )))
 
-hsqExplanation <- helpText(HTML(knit2html(text=
-"**Note:** The power calculation requires an estimate of the true SNP-heritability, so that the power is the probability of estimating a SNP-heritability that is greater than zero."
-)))
-
 vpiExplanation <- helpText(HTML(knit2html(text=
 "**Note:** The default value 2e-5 is obtained from the genetic relatedness between unrelated individuals using common SNPs. "
 )))
 
+hsqExplanation_uni <- helpText(HTML(knit2html(text=
+"**Note:** The power calculation requires the true SNP-heritability, so that the power is the probability of estimating a SNP-heritability that is greater than zero."
+)))
+
+hsqExplanation_biqt <- helpText(HTML(knit2html(text=
+"**Note:** The calculation of the SE of ($r_G) requires the true SNP-heritability of the trait."
+)))
+
+hsqExplanation_bicc <- helpText(HTML(knit2html(text=
+"**Note:** The calculation of the SE of ($r_G) requires the true SNP-heritability of the disease."
+)))
+
+
+rgExplanation <- helpText(HTML(knit2html(text=
+"**Note:** The power calculation of ($r_G) requires the true paramter of ($r_G), so that the power is the probability of estimating a ($r_G) that is different from zero."
+)))
 
 panelUniQt <- function()
 {
@@ -84,7 +96,7 @@ panelUniQt <- function()
 				max     = 1,
 				step    = 0.1
 			),
-			hsqExplanation,
+			hsqExplanation_uni,
 			numericInput(
 				inputId = "alpha_uni_qt",
 				label   = HTML(knit2html(text="Type 1 error rate used in the power calculation, $\\alpha$")),
@@ -106,7 +118,7 @@ panelUniQt <- function()
 		h3("Results"),
 		wellPanel(
 			tableOutput("uni_qt"),
-			outputExplanation1
+			outputExplanation_uni
 		)
 	)
 }
@@ -151,7 +163,7 @@ panelUniCc <- function()
 				max     = 1,
 				step = 0.1
 			),
-			hsqExplanation,
+			hsqExplanation_uni,
 			numericInput(
 				inputId = "alpha_uni_cc",
 				label   = HTML(knit2html(text="Type 1 error rate used in the power calculation, $\\alpha$")),
@@ -173,7 +185,7 @@ panelUniCc <- function()
 		h3("Outputs"),
 		wellPanel(
 			tableOutput("uni_cc"),
-			outputExplanation1
+			outputExplanation_uni
 		)
 	)
 }
@@ -237,7 +249,7 @@ panelBiQt <- function()
 					max     = 1,
 					step    = 0.1
 				),
-				hsqExplanation
+				hsqExplanation_biqt
 			),
 			h4("Trait #2"),
 			wellPanel(
@@ -249,7 +261,7 @@ panelBiQt <- function()
 					max     = 1,
 					step    = 0.1
 				),
-				hsqExplanation
+				hsqExplanation_biqt
 			),
 			h4("Other details"),
 			wellPanel(
@@ -280,7 +292,7 @@ panelBiQt <- function()
 		h3("Outputs"),
 		wellPanel(
 			tableOutput("bi_qt"),
-			outputExplanation2
+			outputExplanation_bi
 		)
 	)
 }
@@ -369,7 +381,7 @@ panelBiCc <- function()
 					max     = 1,
 					step = 0.1
 				),
-				hsqExplanation
+				hsqExplanation_bicc
 			),
 			h4("Trait #2"),
 			wellPanel(			
@@ -381,7 +393,7 @@ panelBiCc <- function()
 					max     = 1,
 					step = 0.1
 				),
-				hsqExplanation
+				hsqExplanation_bicc
 			),
 			h4("Other details"),
 			wellPanel(
@@ -412,7 +424,7 @@ panelBiCc <- function()
 		h3("Outputs"),
 		wellPanel(
 			tableOutput("bi_cc"),
-			outputExplanation2
+			outputExplanation_bi
 		)
 	)
 }
@@ -485,7 +497,7 @@ panelBiQtCc <- function()
 					max     = 1,
 					step = 0.1
 				),
-				hsqExplanation
+				hsqExplanation_biqt
 			),
 			h4("Case-control study"),
 			wellPanel(
@@ -497,7 +509,7 @@ panelBiQtCc <- function()
 					max     = 1,
 					step = 0.1
 				),
-				hsqExplanation
+				hsqExplanation_bicc
 			),
 			h4("Other details"),
 			wellPanel(
@@ -528,7 +540,7 @@ panelBiQtCc <- function()
 		h3("Outputs"),
 		wellPanel(
 			tableOutput("bi_qtcc"),
-			outputExplanation2
+			outputExplanation_bi
 		)
 	)
 }
