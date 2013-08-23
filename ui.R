@@ -7,29 +7,41 @@ textSidebar <- function()
 	sidebarPanel(
 		tags$head(
         tags$style(type="text/css", "body {font-size: 20px; }")),
-		HTML(
-			knit2html(text=
-"*written by [Gibran Hemani](mailto:gibran.hemani@uq.edu.au) and [Jian Yang](mailto:jian.yang@uq.edu.au) at [CTGG](http://www.complextraitgenomics.com/)*
+		HTML(knit2html(text="*written by [Gibran Hemani](mailto:gibran.hemani@uq.edu.au) and [Jian Yang](mailto:jian.yang@uq.edu.au) at [CTGG](http://www.complextraitgenomics.com/)*")),
+		h3("Calculate the power of univariate or bivariate GCTA analysis"),
+		wellPanel(
+			HTML(
+				knit2html(text=
+"This tool is designed to calculate the statistical power for a GCTA analysis of estimating genetic variance or genetic correlation using genome-wide SNPs. For full details on the methods please refer to:
 
-### Calculate the power of univariate or bivariate GCTA analysis
+**Visscher et al. (2013) Statistical power to detect genetic (co)variance of complex traits using SNP data in unrelated samples. Under review.**
 
-This tool is designed to calculate the statistical power for a GCTA analysis of estimating genetic variance or genetic correlation using genome-wide SNPs. For full details on the methods please refer to:
+For more information about GCTA analyses, please visit the **[GCTA webpage](http://www.complextraitgenomics.com/software/gcta/)**"
+				)
+			)
+		),
+		h3("Details"),
+		wellPanel(
+			HTML(
+				knit2html(text=
+"**Quantitative Trait (QT)**: univariate analysis of a quantitative trait
 
-**Visscher et al. (2013) Statistical power to detect genetic (co)variance of complex traits using SNP data in unrelated samples. Under review.**\n
+**Case-Control study (CC)**: univariate analysis of a case-control study
 
-For more information about GCTA analyses, please visit the **[GCTA webpage](http://www.complextraitgenomics.com/software/gcta/)**\n
+**QT vs QT**: bivariate analysis of two quantitative traits
 
+**CC vs CC**: bivariate analysis of two case-control studies
 
-### Details
-
-**Quantitative Trait (QT)**: univariate analysis of a quantitative trait\n
-**Case-Control study (CC)**: univariate analysis of a case-control study\n
-**QT vs QT**: bivariate analysis of two quantitative traits\n
-**CC vs CC**: bivariate analysis of two case-control studies\n
-**QT vs CC**: bivariate analysis of a quantitative trait and a case-control study\n
-                
-                ",
-        tags$style(type="text/css", "body {font-size: 20px; }"),
+**QT vs CC**: bivariate analysis of a quantitative trait and a case-control study"
+				)
+ 			)
+		),
+		h3("Select the type of analysis"),
+		wellPanel(
+			radioButtons(
+				inputId = "experiment",
+				label   = "",
+				c("Univariate" = "univ", "Bivariate" = "biv")
 			)
 		)
 	)
@@ -545,17 +557,23 @@ panelBiQtCc <- function()
 	)
 }
 
+
+univPanel <- tabsetPanel(panelUniQt(), panelUniCc())
+bivPanel <- tabsetPanel(panelBiQt(), panelBiCc(), panelBiQtCc())
+
+
 shinyUI(
 	pageWithSidebar(
 		headerPanel("GCTA Power Calculator"),
 		textSidebar(),
 		mainPanel(
-			tabsetPanel(
-				panelUniQt(),
-				panelUniCc(),
-				panelBiQt(),
-				panelBiCc(),
-				panelBiQtCc()
+			conditionalPanel(
+				condition = "input.experiment == 'univ'",
+				univPanel
+			),
+			conditionalPanel(
+				condition = "input.experiment == 'biv'",
+				bivPanel
 			)
 		)
 	)
