@@ -27,7 +27,7 @@ For more information about GCTA analyses, please visit the **[GCTA webpage](http
 				label   = "",
 				c("Univariate analysis" = "univ", "Bivariate analysis" = "biv")
 			)
-		)
+		),
 		h3("Note on browsers"),
 		wellPanel(
 			HTML(
