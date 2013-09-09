@@ -28,22 +28,14 @@ For more information about GCTA analyses, please visit the **[GCTA webpage](http
 				c("Univariate analysis" = "univ", "Bivariate analysis" = "biv")
 			)
 		)
-		#h3("Details"),
-		#wellPanel(
-			#HTML(
-			#	knit2html(text=
-#"**Quantitative Trait (QT)**: univariate analysis of a quantitative trait
-
-#**Case-Control study (CC)**: univariate analysis of a case-control study
-
-#**QT vs QT**: bivariate analysis of two quantitative traits
-
-#**CC vs CC**: bivariate analysis of two case-control studies
-
-#**QT vs CC**: bivariate analysis of a quantitative trait and a case-control study"
-				#)
- 			#)
-		#)
+		h3("Note on browsers"),
+		wellPanel(
+			HTML(
+				knit2html(text=
+"This website is best viewed in a **modern** web browser, such as Internet Explorer 9 or above, [Google Chrome](https://www.google.com/intl/en/chrome/browser/), [Firefox](http://www.firefox.com), [Opera](http://www.opera.com/), or [Safari](http://www.apple.com/safari/). You may have problems using this website (and others) on Internet Explorer 8 or below."
+				)
+ 			)
+		)
 	)
 }
 
