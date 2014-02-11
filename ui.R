@@ -556,7 +556,7 @@ bivPanel <- tabsetPanel(panelBiQt(), panelBiCc(), panelBiQtCc())
 
 shinyUI(
 	pageWithSidebar(
-		headerPanel("GCTA Power Calculator"),
+		headerPanel("GCTA-GREML Power Calculator"),
 		textSidebar(),
 		mainPanel(
 			conditionalPanel(
