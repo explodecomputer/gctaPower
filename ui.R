@@ -8,11 +8,11 @@ textSidebar <- function()
 		tags$head(
         tags$style(type="text/css", "body {font-size: 20px; }")),
 		HTML(knit2html(text="*written by [Gibran Hemani](mailto:gibran.hemani@uq.edu.au) and [Jian Yang](mailto:jian.yang@uq.edu.au) at [CTGG](http://www.complextraitgenomics.com/)*")),
-		h3("Calculate the power of univariate or bivariate GCTA analysis"),
+		h3("Calculate the power of univariate or bivariate GREML analysis as implemented in GCTA"),
 		wellPanel(
 			HTML(
 				knit2html(text=
-"This tool is designed to calculate the statistical power for a GCTA analysis of estimating genetic variance or genetic correlation using genome-wide SNPs. For full details on the methods please refer to:
+"This tool is designed to calculate the statistical power of estimating genetic variance or genetic correlation using genome-wide SNPs (GREML analysis as implemented in GCTA). For full details on the methods please refer to:
 
 **Visscher et al. (2013) Statistical power to detect genetic (co)variance of complex traits using SNP data in unrelated samples. Under review.**
 
@@ -178,7 +178,7 @@ panelUniCc <- function()
 			),
 			numericInput(
 			    inputId = "vpi_uni_cc",
-			    label   = "Variance of the SNP-derived genetic relatiionships",
+			    label   = "Variance of the SNP-derived genetic relationships",
 			    value   = 2e-5,
 			    min     = 1e-30,
 			    max     = 1, 
