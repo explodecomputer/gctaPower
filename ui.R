@@ -16,7 +16,7 @@ textSidebar <- function()
 
 **Visscher et al. (2013) Statistical power to detect genetic (co)variance of complex traits using SNP data in unrelated samples. PLoS Genetics. In press.**
 
-For more information about GCTA analyses, please visit the **[GCTA webpage](http://www.complextraitgenomics.com/software/gcta/)**"
+For more information about GCTA analyses, please visit the **[GCTA webpage](http://www.cnsgenomics.com/software/gcta/)**"
 				)
 			)
 		),
