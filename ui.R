@@ -7,7 +7,7 @@ textSidebar <- function()
 	sidebarPanel(
 		tags$head(
         tags$style(type="text/css", "body {font-size: 20px; }")),
-		HTML(knit2html(text="*written by [Gibran Hemani](mailto:gibran.hemani@uq.edu.au) and [Jian Yang](mailto:jian.yang@uq.edu.au) at [CTGG](http://www.complextraitgenomics.com/)*")),
+		HTML(knit2html(text="*written by [Gibran Hemani](mailto:gibran.hemani@uq.edu.au) and [Jian Yang](mailto:jian.yang@uq.edu.au) at the [Centre for Neuroscience and Statistical Genomics](http://www.cnsgenomics.com/)*")),
 		h4("Calculate the power of univariate or bivariate GREML analysis as implemented in GCTA"),
 		wellPanel(
 			HTML(
