@@ -14,7 +14,7 @@ textSidebar <- function()
 				knit2html(text=
 "This tool is designed to calculate the statistical power of estimating genetic variance or genetic correlation using genome-wide SNPs (GREML analysis as implemented in GCTA). For full details on the methods please refer to:
 
-**Visscher et al. (2013) Statistical power to detect genetic (co)variance of complex traits using SNP data in unrelated samples. PLoS Genetics. In press.**
+**[Visscher et al. (2014) Statistical power to detect genetic (co)variance of complex traits using SNP data in unrelated samples. PLoS Genetics, 10(4): e1004269.](http://www.plosgenetics.org/article/info%3Adoi%2F10.1371%2Fjournal.pgen.1004269)**
 
 For more information about GCTA analyses, please visit the **[GCTA webpage](http://www.cnsgenomics.com/software/gcta/)**"
 				)
